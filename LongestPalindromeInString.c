@@ -20,6 +20,7 @@ void main()
     for (int i = 0; i <j; i++)
     {
         length[i] = 0;
+
         for (int l = i - 1, r = i + 1; l >= 0 && r < j; l--, r++)
         {
             if (str[l] != str[r])
@@ -32,6 +33,7 @@ void main()
             maxindex = i;
             //  printf("mi %d\n",maxindex);}
            }
+}
     char ans[10];
     j = 0;
 
@@ -46,3 +48,4 @@ void main()
     ans[j] = '\0';
     printf("%s", ans);
 }
+

@@ -1,80 +1,119 @@
-++++++++++++++#include<stdio.h>
+
+#include<stdio.h>
 #include<stdlib.h>
-void insert();
+int insert();
 void display();
-void deletion();
+void delete();
+void delete1(int l);
+
+void display1();
+void sort();
+    void ss();
+
 struct node
 {
     int data;
-    struct node*next;
-     struct node*prev;
 
-}*newnode,*temp,*head;
+    struct node *next;
+        struct node *prev;
+
+}
+*newnode,*head,*temp,*tail,*c;
+int main()
+{
+    int a;
+    a=insert();
+    display();
+
+    delete();
+display();
+    sort();
+    printf("The sorted list is \n");
+   display();
 
 
-void main()
+}
+int insert()
+{
+    int l=0;
+    int choice=1;
+    while(choice==1)
     {
-        insert();
-        display();
-        deletion();
-        display();
 
+
+    newnode=(struct node*)malloc(sizeof(struct node));
+    printf("Enter the data\n");
+    scanf("%d",&newnode->data);
+    newnode->next=0;
+if(tail==0&&head==0)
+{
+
+    head=tail=newnode;
+}
+else
+{
+
+    temp=tail;
+    while(temp->next!=0)
+    {
+        temp=temp->next;
     }
-    void insert()
-    {
-        int choice=1;
-        while(choice==1)
-    {
-        newnode=malloc(sizeof(struct node));
-        printf("enter the data");
-        scanf("%d",&newnode->data);
-        newnode->next=0;
-        if(head==0)
-        {
-            head=newnode;
-
-        }
-        else
-        {
-            temp=head;
-            while(temp->next!=0)
-            {
-             temp=temp->next;
-            }
-            temp->next=newnode;
-            newnode->prev=temp;
-
-        }
-        printf("enter the choice");
-        scanf("%d",&choice);
+    temp->next=newnode;
+    tail=newnode;
+}
+l++;
+    printf("Enter your choice 0 or 1\n");
+    scanf("%d",&choice);
     }
-    }
-    void deletion()
-    {
-    int element;
-    printf("enter the element");
-    scanf("%d",&element);
+        printf("The length of node is %d\n",l);
+return l;
+}
+
+
+void display()
+{
     temp=head;
-    while(temp->data!=element)
+        printf("the values are\n ");
+
+    while(temp->next!=0)
     {
+        printf("%d ",temp->data);
         temp=temp->next;
 
     }
-    temp->prev->next=temp->next;
-    temp->next->prev=temp->prev;
+    printf("%d\n",temp->data);
 
-    free(temp);
+}
+void sort() {
+        temp = head, c = NULL;
+        int t;
+
+
+            while(temp != 0) {
+                c = temp->next;
+
+                while(c != 0) {
+                    if(temp->data > c->data) {
+                        t= temp->data;
+                        temp->data =c->data;
+                        c->data = t;
+                    }
+                    c = c->next;
+                }
+                temp = temp->next;
+            }
 
     }
-    void display()
-        {
-            temp=head;
 
-         while(temp->next!=0)
-         {
-             printf("%d ",temp->data);
-             temp=temp->next;
-         }
-         printf("%d",temp->data);
 
-        }
+
+    void delete()
+    {
+        temp=head;
+        head=head->next;
+        printf("the removed element is %d\n",temp->data);
+        free(temp);
+    }
+
+
+
